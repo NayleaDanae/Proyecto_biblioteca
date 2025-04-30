@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesInicio.css">
+    <title>Biblioteca</title>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <h1>Biblioteca 6</h1>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#acerca">Acerca de</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li id="bienvenidoUsuario"></li>
+                <li><button id="cerrarSesion">Cerrar Sesión</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Bienvenido a la Biblioteca 6</h2>
+        <p>Accede a miles de libros y recursos en línea de manera fácil y rápida.</p>
+        <a href="#catalogo" class="btn">Explora el Catálogo</a>
+    </section>
+
+    <!-- Sección de Catálogo -->
+    <section id="catalogo" class="section">
+        <h2>Catálogo de Libros</h2>
+        <div class="catalogo-cards">
+            <div class="card">
+                <img src="https://via.placeholder.com/150" alt="Libro 1">
+                <h3>Libro 1</h3>
+                <p>Descripción breve del libro 1.</p>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/150" alt="Libro 2">
+                <h3>Libro 2</h3>
+                <p>Descripción breve del libro 2.</p>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/150" alt="Libro 3">
+                <h3>Libro 3</h3>
+                <p>Descripción breve del libro 3.</p>
+            </div>
+        </div>
+    </section>
+
+    <script> 
+        // Mostrar usuario
+        document.addEventListener('DOMContentLoaded', function() {
+            const usuario = localStorage.getItem("usuario");
+            const bienvenido = document.getElementById("bienvenidoUsuario");
+            if (!usuario) {
+                window.location.href = "login.html";
+                return;
+            }
+            
+            bienvenido.textContent = usuario;
+    
+            // Cerrar sesión
+            document.getElementById("cerrarSesion").addEventListener("click", function() {
+                localStorage.removeItem("usuario");
+                window.location.href = "login.html?logout=success";
+            });
+
+        });
+    </script>
+</body>
+</html>
